@@ -79,12 +79,17 @@ def make_server(config, data, port=8765):
             if self.path in ("/", "/app.js", "/style.css"):
                 name, kind = {"/":("index.html","text/html; charset=utf-8"), "/app.js":("app.js","text/javascript; charset=utf-8"), "/style.css":("style.css","text/css; charset=utf-8")}[self.path]
                 self.send(200, (static / name).read_bytes(), kind)
-            elif self.path == "/api/projects":
+            elif self.path in ("/api/projects", "/api/owner-state"):
                 if not self.authorized():
                     self.send(401, b"Authentication required")
                     return
                 try:
-                    body = json.dumps(decode_snapshot(read_at(dfd,"snapshot.json",2_000_000))).encode()
+                    if self.path == "/api/owner-state":
+                        from .owner import freshness,locked
+                        with locked(data) as coherent:
+                            body = json.dumps(freshness(coherent)).encode()
+                    else:
+                        body = json.dumps(decode_snapshot(read_at(dfd,"snapshot.json",2_000_000))).encode()
                     self.send(200, body, "application/json")
                 except (ValueError, OSError):
                     self.send(503, b"Snapshot unavailable or invalid")

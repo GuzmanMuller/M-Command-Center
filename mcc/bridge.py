@@ -32,9 +32,13 @@ def main():
         print(json.dumps({"valid": True, "source_sha256": digest(source),
                           "project_ids": [x["id"] for x in snapshot["projects"]]}))
         return
-    fd = root_fd(args.data_dir)
+    from .owner import locked as owner_locked
+    owner_context=owner_locked(args.data_dir)
+    fd=owner_context.__enter__()
     locked = False
     try:
+        from .owner import reject_owner_root
+        reject_owner_root(fd)
         # Cooperative writer lock. Existing import remains an owner-only operation;
         # stop concurrent import/file writers while reviewing or publishing.
         if args.apply:
@@ -72,7 +76,7 @@ def main():
     finally:
         if locked:
             os.unlink("bridge.lock", dir_fd=fd)
-        os.close(fd)
+        owner_context.__exit__(None,None,None)
 
 if __name__ == "__main__":
     main()
