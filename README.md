@@ -29,6 +29,10 @@ Use an owner-controlled mode-0700 selection directory. Prepare a snapshot follow
 
 Import atomically replaces only MCC's own snapshot. Absolute selections, traversal and symlinks are denied. Text can still contain your sensitive information: shape validation is not a privacy redactor.
 
+## OpenClaw project awareness (optional)
+
+[Follow the onboarding guide](docs/openclaw.md): merge a minimal owner-reviewed AGENTS snippet, maintain private neutral project records, and validate/review/back up/atomically refresh MCC with `mcc-bridge`. Optional repo-owned skill included. No automatic install, config mutation, Gateway plugin or agent execution; the UI stays read-only. Start with the demo, then explicitly choose your canonical records and approved write scope.
+
 ## Security and privacy
 
 Loopback IPv4 only; exact Host and same-Origin checks; POST login with an owner-only random token; HttpOnly, SameSite=Strict one-hour in-memory sessions; no query strings; strict CSP; text-only DOM rendering; no access logs, telemetry, browser token storage or external assets. Lock session to revoke it. `rotate-token` requires a viewer restart to revoke all old sessions. Only one operator session is retained. Local HTTP has no Secure cookie because it is loopback HTTP: **do not proxy or expose this viewer remotely**. No trusted-proxy authentication is implemented. See SECURITY.md for boundaries.
@@ -43,7 +47,7 @@ Stop the viewer, then `.venv/bin/python -m pip uninstall m-command-center`; remo
 
 ## Architecture and compatibility
 
-CLI owns explicit initialization/import. Strict model validates neutral schema. Loopback server reads only its own snapshot and serves bundled original UI. Gateway integration is **not implemented or tested**; an optional future adapter must use documented scoped read APIs and an independently reviewed contract, never raw internal databases or owner-token dispatch. See docs/adapter.md.
+CLI owns explicit initialization/import. Strict model validates neutral schema. Loopback server reads only its own snapshot and serves bundled original UI. OpenClaw file/CLI onboarding is available separately; Gateway integration is **not implemented or tested**; an optional future adapter must use documented scoped read APIs and an independently reviewed contract, never raw internal databases or owner-token dispatch. See docs/adapter.md.
 
 Verified: Linux x86_64 (WSL), Python 3.12.3, and Chromium desktop/mobile emulation. Package metadata permits Python 3.11+, but other Python versions, arm64, native Windows, macOS, WebKit and physical Safari are untested. This is not portable certification or Gateway integration.
 

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "projects": [
+    {
+      "id": "garden",
+      "name": "Community garden",
+      "objective": "Plan a synthetic planting calendar",
+      "status": "active",
+      "next_step": "Review the planting plan",
+      "blockers": [],
+      "roadmap": [
+        "Draft calendar",
+        "Owner review"
+      ],
+      "updated": "2026-01-01"
+    }
+  ]
+}
