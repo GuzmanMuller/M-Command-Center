@@ -41,6 +41,10 @@ The authenticated read-only dashboard exposes expandable canonical task history 
 
 The guide supplies `mcc-owner apply`, `read` and `reconcile` commands for intake, manual authorization, checkpoints, review and resume. Manual `--human` is procedural and forgeable by unrestricted same-UID execution, not enforced independent reviewer identity. Evidence binds bytes but reported passes need independent checking. Real model/session and channel adherence remain untested.
 
+## Token accounting reference (optional)
+
+[Token accounting guide](docs/token-accounting.md) provides a runnable synthetic neutral-file normalizer and privacy-safe attribution/recovery checklist. No connected automatic runtime capture, database access, ledger persistence or token analytics UI is implemented.
+
 ## Security and privacy
 
 Loopback IPv4 only; exact Host and same-Origin checks; POST login with an owner-only random token; HttpOnly, SameSite=Strict one-hour in-memory sessions; no query strings; strict CSP; text-only DOM rendering; no access logs, telemetry, browser token storage or external assets. Lock session to revoke it. `rotate-token` requires a viewer restart to revoke all old sessions. Only one operator session is retained. Local HTTP has no Secure cookie because it is loopback HTTP: **do not proxy or expose this viewer remotely**. No trusted-proxy authentication is implemented. See SECURITY.md for boundaries.

@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "source_complete": true,
+  "events": [
+    {
+      "origin": "example-source",
+      "run_type": "neutral-run",
+      "run_id": "example-run",
+      "turn_id": "turn-1",
+      "provider": "example-provider",
+      "requested_model": "example-model-a",
+      "selected_model": "example-model-a",
+      "response_model": "example-model-a",
+      "accounting": "delta",
+      "usage": {
+        "input": 80,
+        "cached_input": 20,
+        "output": 20,
+        "reasoning_output": 5,
+        "total": 100
+      },
+      "binding": {
+        "project": "example-project",
+        "task": "example-task"
+      }
+    },
+    {
+      "origin": "example-source",
+      "run_type": "neutral-run",
+      "run_id": "example-run",
+      "turn_id": "turn-1",
+      "provider": "example-provider",
+      "requested_model": "example-model-a",
+      "selected_model": "example-model-a",
+      "response_model": "example-model-a",
+      "accounting": "delta",
+      "usage": {
+        "input": 80,
+        "cached_input": 20,
+        "output": 20,
+        "reasoning_output": 5,
+        "total": 100
+      },
+      "binding": {
+        "project": "example-project",
+        "task": "example-task"
+      }
+    },
+    {
+      "origin": "example-source",
+      "run_type": "neutral-run",
+      "run_id": "example-run",
+      "turn_id": "turn-2",
+      "provider": "example-provider",
+      "requested_model": "example-model-a",
+      "selected_model": "example-model-a",
+      "response_model": "example-model-b",
+      "accounting": "delta",
+      "usage": {
+        "input": 80,
+        "cached_input": 20,
+        "output": 20,
+        "reasoning_output": 5,
+        "total": 100
+      },
+      "binding": {
+        "project": "example-project",
+        "task": "example-task"
+      }
+    },
+    {
+      "origin": "example-source",
+      "run_type": "neutral-run",
+      "run_id": "example-run",
+      "turn_id": "turn-3",
+      "provider": "example-provider",
+      "requested_model": "example-model-a",
+      "selected_model": "example-model-a",
+      "response_model": null,
+      "accounting": "delta",
+      "usage": {
+        "input": 8,
+        "cached_input": null,
+        "output": 2,
+        "reasoning_output": null,
+        "total": 10
+      },
+      "binding": {
+        "unresolved": "missing-binding"
+      }
+    }
+  ]
+}
