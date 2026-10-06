@@ -1,4 +1,4 @@
-# M-command-center · MCC
+# M-Command-Center · MCC
 
 ![Red-and-cyan robot command center concept art with project planning displays](assets/readme-command-center.jpg)
 
