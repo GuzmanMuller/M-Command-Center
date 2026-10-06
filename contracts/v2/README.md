@@ -1,0 +1,10 @@
+# Version 2 owner records (bounded candidate)
+Canonical format schema_version=2; exact validation is mcc.owner.validate_record, not v1 import. Each registered project is one project-<id>.json in a dedicated marked owner root. Stable project and task IDs are lower-case [a-z0-9-] <=64 characters. Record revision is an integer >=1 and every request supplies expected_revision plus an operation key. Revision counts commits, not human dates.
+
+Project fields: schema_version/id/name/objective/status/next_step/blockers/roadmap/updated/revision/tasks/receipts. Task fields: id/revision/scope/criteria/artifact_paths/status/authorization/attempts/decisions. Attempt fields: id/task_revision/status/evidence. Evidence by criterion: attempt/task_revision/path/sha256/method/passed. Authorize decision: kind/revision/operation_key/assurance. Accept/reject decision: kind/revision/attempt/evidence_digest/assurance (reject adds reason). Operation receipt: project_id/revision/operation_key/request_digest, committed with project.
+
+Owner root marker: schema_version=2, kind=mcc-owner-root. Directory membership is the bounded registry; filenames match record IDs. No arbitrary directory discovery, external execution or credentials. Projection v1 snapshot is derived and never canonical for owner tasks. Sidecar version 2 contains revisions/tasks/snapshot_digest; complete sidecar comparison detects corrupted display states. UI snapshot and freshness are read under the writer lock.
+
+Limits: 200 projects; 100 tasks/project; 100 attempts/task; 20 criteria and artifact paths/task; 2MB project history and 2MB aggregate projection output. No automatic history compaction. Reject oversized new commit before canonical replacement. Cooperative same-UID flock is not a malicious-writer security boundary. Independent human review is procedural, not cryptographic identity.
+
+See docs/owner-records.md for lifecycle, replay/crash recovery, scope/approval boundaries and exact CLI payload shapes. No v2 import/migration from private engines. Tests are synthetic, not model/channel adherence evidence.

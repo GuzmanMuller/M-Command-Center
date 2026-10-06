@@ -33,13 +33,21 @@ Import atomically replaces only MCC's own snapshot. Absolute selections, travers
 
 [Follow the onboarding guide](docs/openclaw.md): merge a minimal owner-reviewed AGENTS snippet, maintain private neutral project records, and validate/review/back up/atomically refresh MCC with `mcc-bridge`. Optional repo-owned skill included. No automatic install, config mutation, Gateway plugin or agent execution; the UI stays read-only. Start with the demo, then explicitly choose your canonical records and approved write scope.
 
+## Structured task ledger (optional owner route, v0.3)
+
+Use the [owner-records guide](docs/owner-records.md) for canonical schema-v2 projects, scoped tasks, criteria, authorizations, attempts, evidence, rejection/retry/acceptance decisions and recovery. Explicit owner adoption and a **new dedicated root** are required. The v1 neutral import/bridge does not ingest structured fields; retain the snapshot-only instructions above for separate roots.
+
+The authenticated read-only dashboard exposes expandable canonical task history beside clearly labelled projected summaries. Two-second polling reflects commits automatically; a small synthetic Edge fixture observed 112 ms convergence, **not a latency guarantee**. Open history stays expanded across polls; stale/unavailable projections are labelled. MCC records work conducted through OpenClaw normal tools; it never executes tasks or dispatches agents.
+
+The guide supplies `mcc-owner apply`, `read` and `reconcile` commands for intake, manual authorization, checkpoints, review and resume. Manual `--human` is procedural and forgeable by unrestricted same-UID execution, not enforced independent reviewer identity. Evidence binds bytes but reported passes need independent checking. Real model/session and channel adherence remain untested.
+
 ## Security and privacy
 
 Loopback IPv4 only; exact Host and same-Origin checks; POST login with an owner-only random token; HttpOnly, SameSite=Strict one-hour in-memory sessions; no query strings; strict CSP; text-only DOM rendering; no access logs, telemetry, browser token storage or external assets. Lock session to revoke it. `rotate-token` requires a viewer restart to revoke all old sessions. Only one operator session is retained. Local HTTP has no Secure cookie because it is loopback HTTP: **do not proxy or expose this viewer remotely**. No trusted-proxy authentication is implemented. See SECURITY.md for boundaries.
 
 ## Storage, backup and restore
 
-There is no database or retained legacy Work Engine store. Own state is `snapshot.json` under your configured data directory; credentials are separate. Stop the viewer, copy the snapshot into an owner-protected backup directory, record its SHA-256, and restore only an independently validated schema-v1 snapshot via the import command. Back up credentials separately if needed; otherwise reinitialize or rotate. Unknown contract versions fail closed. Future major versions require explicit conversion; no silent migration.
+There is no database or retained legacy Work Engine store. For the **v1 viewer/import route**, own state is `snapshot.json` under your configured data directory; credentials are separate. Stop the viewer, copy the snapshot into an owner-protected backup directory, record its SHA-256, and restore only an independently validated schema-v1 snapshot via the import command. Back up credentials separately if needed; otherwise reinitialize or rotate. For the **optional v2 owner route**, canonical state is every `project-<id>.json` plus `owner-root.json`, including receipts/tasks/attempts/evidence/review decisions. `snapshot.json` is derived, not a backup of that history. Stop writers/viewer, back up the complete canonical registry and artifacts coherently under the owner lock, restore into a new protected root, then reconcile. Legacy import is deliberately denied for marked owner roots. Follow [owner records backup/restore](docs/owner-records.md), not the v1 import restore above. Unknown contract versions fail closed. Future major versions require explicit conversion; no silent migration.
 
 ## Uninstall
 

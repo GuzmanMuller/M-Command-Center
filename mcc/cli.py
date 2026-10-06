@@ -38,8 +38,11 @@ def main():
     elif args.command == "import":
         cfd, dfd, ifd = root_fd(config), root_fd(data), root_fd(args.root)
         try:
-            snapshot = decode_snapshot(read_at(ifd,args.file,2_000_000,private=False))
-            write_at(dfd,"snapshot.json",json.dumps(snapshot,indent=2))
+            from .owner import reject_owner_root,locked
+            with locked(data) as writer:
+                reject_owner_root(writer)
+                snapshot = decode_snapshot(read_at(ifd,args.file,2_000_000,private=False))
+                write_at(writer,"snapshot.json",json.dumps(snapshot,indent=2))
         finally:
             for fd in (cfd,dfd,ifd):os.close(fd)
         print("Imported selected neutral snapshot only.")

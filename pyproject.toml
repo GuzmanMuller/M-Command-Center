@@ -3,7 +3,7 @@ requires = ["setuptools==75.8.0", "wheel==0.45.1"]
 build-backend = "setuptools.build_meta"
 [project]
 name = "m-command-center"
-version = "0.2.0"
+version = "0.3.0"
 description = "Authenticated local read-only project recovery"
 requires-python = ">=3.11"
 dependencies = []
@@ -11,6 +11,7 @@ license = {file = "LICENSE"}
 [project.scripts]
 mcc = "mcc.cli:main"
 mcc-bridge = "mcc.bridge:main"
+mcc-owner = "mcc.owner:main"
 [tool.setuptools]
 packages = ["mcc"]
 license-files = ["LICENSE"]
