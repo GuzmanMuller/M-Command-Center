@@ -1,6 +1,6 @@
 # Security
 
-MCC 0.1 is a pre-release local viewer, not a public service. No remote exposure or reverse proxy is supported. Local programs running as your user can read your credential; protect your account, config and data directories. Store directories on trusted owner-controlled filesystems. Authentication is not a sandbox against a compromised local account.
+MCC 0.2 is a pre-release local viewer, not a public service. No remote exposure or reverse proxy is supported. Local programs running as your user can read your credential; protect your account, config and data directories. Store directories on trusted owner-controlled filesystems. Authentication is not a sandbox against a compromised local account.
 
 Send vulnerabilities privately to the repository owner using a verified private contact or GitHub private vulnerability reporting when enabled. Do not post credentials or real snapshots in issues. There is no public security mailbox configured in this candidate.
 
