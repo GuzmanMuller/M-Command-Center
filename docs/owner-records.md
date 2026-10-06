@@ -18,6 +18,10 @@ Back up all canonical project records under the same writer lock, plus artifacts
 
 Limitations: POSIX only; bounded history fails closed at 2MB/project and aggregate history and projection output are preflighted against 2MB before record commit; no history compaction or server mutation routes; no technically enforced reviewer separation; no model/channel adherence proof. No automatic transcript/credential collection or telemetry. Owner-supplied text/artifacts can contain secrets; there is no content-level secret filter. Never submit sensitive data for display. No private engine or policy data was copied into this candidate.
 
+## Accounting and result scope
+
+Before executing, include permitted result-artifact writes in the reviewed task scope. See [token accounting](token-accounting.md) for separate reference-only usage normalization and attribution; this owner ledger does not automatically capture runtime tokens.
+
 ## Explicit intake and review commands
 
 Initialize a new viewer/data root without demo content. Separately create owner-controlled artifact and mode-0700 request directories. Prepare mode-0600 reviewed JSON envelopes; never include credentials or sensitive text. Substitute only selected paths:
