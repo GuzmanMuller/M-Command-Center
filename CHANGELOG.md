@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Fsync the containing directory after atomic v1 writes so the basic snapshot/token path follows the durability discipline already used by owner records.
+- Search project IDs, next steps, blockers, roadmaps and canonical task metadata in addition to name/objective.
+- Run the regression suite across the declared Python 3.11-3.13 support range.
+- Align v0.3 public documentation and distinguish interactive verification from CI coverage.
+
 ## 0.3.0
 
 - Optional canonical v2 owner-managed project/task ledger with revision checks, scoped transitions, idempotent receipts, digest-bound evidence and procedural review/retry history.
