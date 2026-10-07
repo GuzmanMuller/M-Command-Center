@@ -68,6 +68,18 @@ class ModelTests(unittest.TestCase):
                 with self.assertRaises(ValueError):selected_file(p,x)
             (p/"link").symlink_to(p/"good.json")
             with self.assertRaises(ValueError):selected_file(p,"link")
+    def test_write_at_fsyncs_directory_after_replace(self):
+        from unittest.mock import patch
+        from mcc.fs import root_fd, write_at
+        with tempfile.TemporaryDirectory() as t:
+            p=Path(t);fd=root_fd(p)
+            try:
+                with patch("mcc.fs.os.fsync") as fsync:
+                    write_at(fd,"state.json","durable")
+                    self.assertGreaterEqual(fsync.call_count,2)
+                    self.assertEqual(fsync.call_args_list[-1].args[0],fd)
+                self.assertEqual((p/"state.json").read_text(),"durable")
+            finally:os.close(fd)
 class HTTPTests(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory();p=Path(self.tmp.name)

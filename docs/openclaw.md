@@ -1,6 +1,6 @@
 # OpenClaw onboarding: project awareness, not a Gateway plugin
 
-MCC 0.2 provides an optional **file/CLI workflow**. OpenClaw reads owner-approved instructions via its workspace AGENTS.md, reads a canonical neutral snapshot before work, updates approved project records after verification, and uses mcc-bridge to refresh the local viewer. The UI remains read-only. No Gateway pairing, token scopes, internal databases, private Work Engine or config mutation is implemented.
+MCC 0.3 provides an optional **file/CLI workflow**. OpenClaw reads owner-approved instructions via its workspace AGENTS.md, reads a canonical neutral snapshot before work, updates approved project records after verification, and uses mcc-bridge to refresh the local viewer. The UI remains read-only. No Gateway pairing, token scopes, internal databases, private Work Engine or config mutation is implemented.
 
 ## 1. Try MCC first
 

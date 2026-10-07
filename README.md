@@ -61,7 +61,7 @@ Stop the viewer, then `.venv/bin/python -m pip uninstall m-command-center`; remo
 
 CLI owns explicit initialization/import. Strict model validates neutral schema. Loopback server reads only its own snapshot and serves bundled original UI. OpenClaw file/CLI onboarding is available separately; Gateway integration is **not implemented or tested**; an optional future adapter must use documented scoped read APIs and an independently reviewed contract, never raw internal databases or owner-token dispatch. See docs/adapter.md.
 
-Verified: Linux x86_64 (WSL), Python 3.12.3, and Chromium desktop/mobile emulation. Package metadata permits Python 3.11+, but other Python versions, arm64, native Windows, macOS, WebKit and physical Safari are untested. This is not portable certification or Gateway integration.
+Verified interactively: Linux x86_64 (WSL), Python 3.12.3, and Chromium desktop/mobile emulation. The regression suite also runs in GitHub Actions on Ubuntu with Python 3.11, 3.12 and 3.13. arm64, native Windows, macOS, WebKit and physical Safari remain untested. This is not portable certification or Gateway integration.
 
 ## Licensing
 

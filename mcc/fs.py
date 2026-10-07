@@ -80,6 +80,7 @@ def write_at(fd,name,value):
         with os.fdopen(leaf,"w",encoding="utf-8") as f:
             f.write(value);f.flush();os.fsync(f.fileno())
         os.replace(temporary,name,src_dir_fd=fd,dst_dir_fd=fd)
+        os.fsync(fd)
     except BaseException:
         try:os.unlink(temporary,dir_fd=fd)
         except OSError:pass
